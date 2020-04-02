@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="HotelMVVM2020.View.GuestPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HotelMVVM2020.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:HotelMVVM2020.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewModel:GuestViewModel></viewModel:GuestViewModel>
+    </Page.DataContext>
+
+    <StackPanel Orientation="Horizontal" Spacing="20" Name="StackPanel1">
+
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Guests"></TextBlock>
+            
+                <ListView ItemsSource="{Binding GuestCatalogSingleton.Guests}" Height="{Binding ElementName=StackPanel1, Path=ActualHeight}" SelectedItem="{Binding SelectedGuest, Mode=TwoWay}" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"></ListView>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Spacing="15">
+            <StackPanel>
+                <TextBlock Text="Guest No"></TextBlock>
+                <TextBox Text="{Binding NewGuest.Id, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Guest Name"></TextBlock>
+                <TextBox Text="{Binding NewGuest.Name, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock Text="Guest Adress"></TextBlock>
+                <TextBox Text="{Binding NewGuest.Address, Mode=TwoWay}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="30">
+                <StackPanel>
+                    <Button Content="Create" Command="{Binding CreateCommand}"></Button>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Update" Command="{Binding UpdateCommand}" ></Button>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Delete" Command="{Binding DeleteCommand}"></Button>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Clear" Command="{Binding ClearCommand}"></Button>
+                </StackPanel>
+
+            </StackPanel>
+
+        </StackPanel>
+
+        
+        
+    </StackPanel>
+
+
+    
+</Page>
